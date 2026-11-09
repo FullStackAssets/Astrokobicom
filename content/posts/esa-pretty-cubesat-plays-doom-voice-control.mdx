@@ -1,0 +1,59 @@
+---
+title: "ESA’s PRETTY CubeSat Plays Doom via Voice Command, Demonstrating First Orbital Voice Control"
+description: "A European CubeSat successfully ran Doom after a voice command from Earth, marking the first orbital voice‑control demonstration."
+date: "2026-11-09T11:12:16.870Z"
+category: "missions"
+tags: 
+  - "cubesat"
+  - "voice-control"
+  - "doom"
+  - "esa"
+  - "radio-amateurs"
+hero: 
+  url: "https://live.staticflickr.com/3838/14648313895_74c3fac5a6_b.jpg"
+  alt: "Orbital Sciences' Antares Bizarre Launch Anomaly"
+  credit: "jurvetson"
+  creditUrl: "https://www.flickr.com/photos/44124348109@N01/14648313895"
+sources: 
+  - title: " Yes, it runs 'Doom': Satellite plays iconic game in world's 1st demonstration of orbital voice control "
+    url: "https://www.space.com/space-exploration/satellites/yes-it-runs-doom-satellite-plays-iconic-game-in-worlds-1st-demonstration-of-orbital-voice-control"
+  - title: "Yes, it runs 'Doom': Satellite plays iconic game in world's 1st demonstration of orbital voice control"
+    url: "https://www.space.com/space-exploration/satellites/yes-it-runs-doom-satellite-plays-iconic-game-in-worlds-1st-demonstration-of-orbital-voice-control"
+---
+
+On July 27, 2026, a European CubeSat named PRETTY responded to a spoken command from a rooftop in Oslo and launched the classic 1993 game Doom. The voice command—“PRETTY play Doom Doom Doom”—was captured, transcribed onboard, and triggered the game, marking the first time a satellite has been controlled by voice from the ground. The experiment, carried out by a team of radio amateurs and ESA’s OPS‑SAT Space Lab, turned a curiosity into a proof‑of‑concept for future emergency communications. Demonstrating that a spacecraft can understand and act on spoken words opens new possibilities for rescue operations and autonomous satellite functions.
+
+<Callout type="takeaway">Voice‑controlled satellites could let anyone on Earth issue simple commands, from “play Doom” to “send a distress alert.”</Callout>
+
+## What happened
+Radio amateurs attempted six voice transmissions over Poland and Norway between April and July, each failing because the satellite’s receiver channel was too wide to recognize speech. After narrowing the channel, a seventh attempt on July 27 succeeded: the rooftop transmission in Oslo was heard, transcribed, and used to start Doom on the PRETTY CubeSat.
+
+The experiment cost roughly 7,200 NOK (about $775) and took 59 days of volunteer effort, including pizza for the team. Once the game ran, the satellite logged its performance, proving that the onboard voice‑recognition software could both understand a command and execute a non‑mission‑critical task.
+
+## Why it matters
+The successful voice command shows that satellites can process natural language, which could enable rapid, low‑bandwidth alerts such as “mayday” from remote users without needing complex data links. It also demonstrates a new avenue for public engagement and citizen science, as amateur radio groups can directly interact with orbital hardware. However, the experiment also highlighted technical limits—narrowing the receiver bandwidth was essential, and the system currently handles only a very limited vocabulary.
+
+<ProsCons>
+  <Pros>
+    <li>Enables simple, low‑bandwidth emergency commands.</li>
+    <li>Engages amateur radio community in space research.</li>
+    <li>Shows feasibility of AI‑driven transcription on small satellites.</li>
+  </Pros>
+  <Cons>
+    <li>Requires precise tuning of receiver bandwidth.</li>
+    <li>Limited to a small set of recognizable phrases.</li>
+    <li>Risk of false triggers if background noise is misinterpreted.</li>
+  </Cons>
+</ProsCons>
+
+## How to think about it
+When considering voice control for future missions, start by defining a narrow command set that maps directly to critical actions. Pair the voice front‑end with robust error‑checking, such as confirming the command before execution. Test the system in ground‑based simulations that mimic the satellite’s RF environment, then involve amateur radio operators for real‑world validation before launch.
+
+<Callout type="warning">Do not rely on voice commands as the sole method for critical maneuvers until the technology is proven to reject false or noisy inputs reliably.</Callout>
+
+## FAQ
+<FAQ>
+  <Question q="How did the voice command reach the satellite despite the noisy RF environment?">The team narrowed the receiver’s bandwidth, allowing the narrow‑band speech signal to stand out from background noise, and used on‑board transcription software to decode the phrase.</Question>
+  <Question q="What hardware enabled PRETTY to understand spoken words?">PRETTY carries a low‑power processor running custom voice‑recognition software supplied by Estonia’s Tanagra Space, which converts the audio stream into text before acting on it.</Question>
+  <Question q="What are the next steps for voice‑controlled satellites?">Future work will expand the command vocabulary, integrate AI‑based noise filtering, and test voice alerts for real‑time rescue scenarios such as “mayday” from remote users.</Question>
+</FAQ>
