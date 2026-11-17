@@ -3,14 +3,15 @@
  * validate-mdx.mjs — compile every post with the real MDX compiler and
  * report every file that would break `next build`.
  *
- * Catches what the normalizer cannot fix by pattern alone:
- *   - raw `<` in prose (e.g. `(<$15M)`) parsed as a JSX tag start
- *   - malformed attributes, unclosed tags, other MDX syntax errors
+ * Catches:
+ *   - missing/empty frontmatter (a post with no `date` crashes the tag and
+ *     sitemap pages: `frontmatter.date.localeCompare` on undefined)
+ *   - raw `<` in prose, malformed attributes, unclosed tags, other MDX
+ *     syntax errors (via the real compiler)
  *   - JSX components that are not defined by the site (allowlist check)
  *
  * Usage (from a repo root): node scripts/validate-mdx.mjs [content-dir]
- * Prints one line per broken file: <file>: <first error line>.
- * Exits 0 when clean, 1 when any file fails.
+ * Prints one line per broken file. Exits 0 when clean, 1 when any file fails.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -19,12 +20,6 @@ import { compileMDX } from 'next-mdx-remote/rsc';
 const DEFINED_COMPONENTS = new Set([
   'Callout', 'ProsCons', 'Pros', 'Cons', 'FAQ', 'Question',
   'GearBox', 'GearPick', 'AffiliateDisclosure',
-]);
-// Lowercase HTML elements the posts legitimately use.
-const HTML_TAGS = new Set([
-  'a', 'abbr', 'b', 'blockquote', 'br', 'code', 'div', 'em', 'h1', 'h2', 'h3',
-  'h4', 'h5', 'h6', 'hr', 'i', 'img', 'li', 'ol', 'p', 'pre', 'section', 'span',
-  'strong', 'sub', 'sup', 'table', 'tbody', 'td', 'th', 'thead', 'tr', 'u', 'ul',
 ]);
 
 function* walkMdx(dir) {
@@ -43,12 +38,28 @@ function undefinedComponents(source) {
   return [...bad];
 }
 
+function frontmatterProblems(source) {
+  const missing = [];
+  if (!source.trim()) return ['empty file'];
+  const fm = source.match(/^---\n([\s\S]*?)\n---\n/);
+  if (!fm) return ['no frontmatter block'];
+  if (!/^date:\s*\S/m.test(fm[1])) missing.push('no date');
+  if (!/^title:\s*\S/m.test(fm[1])) missing.push('no title');
+  return missing;
+}
+
 const contentDir = process.argv[2] || path.join(process.cwd(), 'content');
 const files = [...walkMdx(contentDir)];
 let failures = 0;
 for (const file of files) {
   const source = fs.readFileSync(file, 'utf8');
   const rel = path.relative(process.cwd(), file);
+  const fmProblems = frontmatterProblems(source);
+  if (fmProblems.length) {
+    console.log(`${rel}: MISSING FRONTMATTER: ${fmProblems.join(', ')}`);
+    failures++;
+    continue;
+  }
   const bad = undefinedComponents(source);
   if (bad.length) {
     console.log(`${rel}: UNDEFINED COMPONENT(S): ${bad.join(', ')}`);
