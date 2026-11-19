@@ -1,0 +1,61 @@
+---
+title: "Cryptography-inspired algorithm finds pulsar 261 Hz in Fermi data 1 million× faster"
+description: "A new cryptography-based technique scans Fermi gamma‑ray data a million times faster, uncovering a 261 Hz pulsar in just 10 hours."
+date: "2026-11-19T21:12:13.331Z"
+category: "explainers"
+tags: 
+  - "pulsars"
+  - "gamma-ray"
+  - "cryptography"
+  - "data-analysis"
+  - "fermi"
+hero: 
+  url: "https://live.staticflickr.com/7093/27744663791_f140fd684a_b.jpg"
+  alt: "Astronomers Find the First 'Wind Nebula' Around a Rare Ultra-Magnetic Neutron Star"
+  credit: "NASA Goddard Photo and Video"
+  creditUrl: "https://www.flickr.com/photos/24662369@N07/27744663791"
+sources: 
+  - title: "Cryptography-inspired method speeds up searches for elusive pulsars"
+    url: "https://phys.org/news/2026-11-cryptography-method-elusive-pulsars.html"
+  - title: "Cryptography-inspired method speeds up searches for elusive pulsars"
+    url: "https://phys.org/news/2026-11-cryptography-method-elusive-pulsars.html"
+---
+
+The hunt for hidden pulsars has taken a quantum leap. An international team has adapted a cryptographic search algorithm to sift through 15 years of NASA’s Fermi gamma‑ray data, locating the isolated pulsar PSR J1622‑7204, which spins 261 times per second. The discovery was made with only about 10 hours of CPU time on a standard desktop, a speedup of roughly one million compared with traditional methods that would require centuries of computing. Faster searches open the door to finding many more of these rare, rapidly rotating neutron stars. Understanding the hidden pulsar population sharpens our picture of the Milky Way’s extreme objects and the physics of dense matter.
+
+<Callout type="takeaway">A cryptography‑inspired algorithm can locate gamma‑ray pulsars a million times faster than previous techniques.</Callout>
+
+## What happened
+The researchers repurposed a cryptographic hashing technique, originally developed by Dotan Gazith and Barak Zackay at the Weizmann Institute, to compress the four‑dimensional search space of spin frequency, spin‑down rate, sky position, and phase. Applied to the full 15‑year Fermi Large Area Telescope dataset, the method identified PSR J1622‑7204, an isolated neutron star rotating 261 Hz, using the equivalent of roughly 10 hours on a standard processor.
+
+By contrast, the best prior algorithm would have required about 600 years of the same computing power to exhaust the same parameter space. Gamma‑ray pulsar detection is especially challenging because Fermi records only a handful of photons from each source, buried in background noise, demanding an exhaustive trial of millions of parameter combinations.
+
+The results were reported in Physical Review Letters, highlighting the interdisciplinary breakthrough that merges cryptographic efficiency with high‑energy astrophysics.
+
+## Why it matters
+Accelerating the search for gamma‑ray pulsars dramatically expands the observable population, allowing astronomers to probe neutron‑star demographics, test theories of dense matter, and refine models of Galactic gamma‑ray emission. The method also demonstrates how tools from computer security can solve longstanding astrophysical bottlenecks, encouraging cross‑field collaborations. Ultimately, a richer pulsar census improves gravitational‑wave background predictions and informs future missions targeting extreme astrophysical environments.
+
+<ProsCons>
+  <Pros>
+    <li>~1,000,000× speedup enables full‑dataset searches.</li>
+    <li>Uses publicly available Fermi data, no new observations required.</li>
+    <li>Fosters interdisciplinary innovation between cryptography and astronomy.</li>
+  </Pros>
+  <Cons>
+    <li>Algorithm implementation demands specialized expertise.</li>
+    <li>Potential for false‑positive candidates that need follow‑up verification.</li>
+    <li>Optimized for gamma‑ray data; may not translate directly to other wavelengths.</li>
+  </Cons>
+</ProsCons>
+
+## How to think about it
+Researchers can adopt a three‑step framework: (1) translate the multidimensional pulsar search into a hash‑friendly representation, (2) apply the cryptographic reduction to prune redundant trials, and (3) validate any candidate with independent timing analyses and, where possible, multi‑wavelength observations. By treating the search as a data‑compression problem, teams can leverage existing high‑performance computing resources without waiting for exotic hardware.
+
+<Callout type="warning">Do not rely solely on the algorithm’s output without independent verification, as statistical fluctuations can mimic pulsar signals.</Callout>
+
+## FAQ
+<FAQ>
+  <Question q="How does a cryptographic method speed up pulsar searches?">The method hashes combinations of spin parameters into compact identifiers, allowing the search to skip large swaths of the parameter space that would produce identical hash values, thus reducing the total number of trials dramatically.</Question>
+  <Question q="Why are gamma‑ray pulsars harder to detect than radio pulsars?">Fermi detects only a few photons from each gamma‑ray pulsar, buried in background noise, whereas radio telescopes receive many more pulses, making the signal‑to‑noise ratio much lower in the gamma‑ray band.</Question>
+  <Question q="Can this technique be applied to other astronomical datasets?">Yes, any dataset that requires exhaustive searches over high‑dimensional parameter spaces—such as fast radio burst localization or exoplanet transit searches—could benefit from similar cryptographic compression strategies.</Question>
+</FAQ>
